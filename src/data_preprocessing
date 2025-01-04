@@ -1,0 +1,17 @@
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+
+def cap_outliers(df, columns, lower_percentile=0.01, upper_percentile=0.99):
+    for col in columns:
+        lower_bound = df[col].quantile(lower_percentile)
+        upper_bound = df[col].quantile(upper_percentile)
+        df[col] = df[col].clip(lower=lower_bound, upper=upper_bound)
+    return df
+
+def preprocess_data(file_path):
+    data = pd.read_csv(file_path)
+    columns_to_cap = ['recency', 'frequency', 'monetary']
+    data = cap_outliers(data, columns_to_cap)
+    scaler = StandardScaler()
+    data[columns_to_cap] = scaler.fit_transform(data[columns_to_cap])
+    return data
