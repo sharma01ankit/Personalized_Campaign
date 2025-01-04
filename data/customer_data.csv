@@ -1,0 +1,4 @@
+customer_id,recency,frequency,monetary,age,gender,spend_category,customer_tag
+1,30,12,5000,29,M,electronics,Luxury Buyers
+2,90,5,1500,34,F,groceries,Discount Sensitive
+3,7,20,10000,41,F,beauty,Health Conscious
